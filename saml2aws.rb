@@ -1,5 +1,4 @@
-  
-require 'formula'
+  require 'formula'
 
 class Saml2aws < Formula
   homepage 'https://github.com/lixiljp/saml2aws'
