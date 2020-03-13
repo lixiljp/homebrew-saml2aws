@@ -4,11 +4,11 @@ class Saml2aws < Formula
   homepage 'https://github.com/lixiljp/saml2aws'
   version '2.24.0'
   if OS.mac?
-    url 'https://github.com/lixiljp/saml2aws/releases/download/eaa.20200213/saml2aws_2.24.0_darwin_amd64.tar.gz'
-    sha256 '088d73119f0eaf3fc2ec8b02b52b9ff93968a3a52b128689ec5286471235fb1c'
+    url 'https://github.com/lixiljp/saml2aws/releases/download/eaa.20200213.2/saml2aws_2.24.1_darwin_amd64.tar.gz'
+    sha256 '574f030001fbbcbfefe9595ec7c4b0d2b7869dbe356b94859a1e50132e6aabe8'
   elsif OS.linux?
-    url 'https://github.com/lixiljp/saml2aws/releases/download/eaa.20200213/saml2aws_2.24.0_linux_amd64.tar.gz'
-    sha256 '190494e3d4d6c2312e210fc0dba933e34c5fa21f16106fdf42a89ac953e9829d'
+    url 'https://github.com/lixiljp/saml2aws/releases/download/eaa.20200213.2/saml2aws_2.24.1_linux_amd64.tar.gz'
+    sha256 'c022a1c23a4d4d1ef658005dd2a458929a322018853b38e435e8c85115571fa0'
   end
 
   depends_on :arch => :x86_64
