@@ -2,7 +2,7 @@ require 'formula'
 
 class Saml2aws < Formula
   homepage 'https://github.com/lixiljp/saml2aws'
-  version '2.24.0'
+  version '2.24.1'
   if OS.mac?
     url 'https://github.com/lixiljp/saml2aws/releases/download/eaa.20200213.2/saml2aws_2.24.1_darwin_amd64.tar.gz'
     sha256 '574f030001fbbcbfefe9595ec7c4b0d2b7869dbe356b94859a1e50132e6aabe8'
