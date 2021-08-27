@@ -10,9 +10,8 @@ brew untap versent/taps
 # run this if you installed saml2aws from tarball
 rm -f /usr/local/bin/saml2aws
 
-# install forked saml2aws
-brew tap lixiljp/saml2aws
-brew install saml2aws
+# install saml2aws from lixiljp repository
+brew install lixiljp/saml2aws/saml2aws
 ```
 
 How to configure:
