@@ -2,6 +2,7 @@ require 'formula'
 
 class Saml2aws < Formula
   homepage 'https://github.com/lixiljp/saml2aws'
+  url 'https://github.com/lixiljp/saml2aws'
   version '2.28.0'
 
   bottle do
