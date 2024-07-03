@@ -4,8 +4,8 @@ class Samba < Formula
   # option. The shared folder appears in the guest as "\\10.0.2.4\qemu".
   desc "SMB/CIFS file, print, and login server for UNIX"
   homepage "https://www.samba.org/"
-  url "https://download.samba.org/pub/samba/stable/samba-4.16.11.tar.gz"
-  sha256 "5218878cdcc01aa8e83d2c84ad16c5f37a01ea5e1a93f640f9ee282053c46e12"
+  url "https://download.samba.org/pub/samba/stable/samba-4.20.2.tar.gz"
+  sha256 "f969ffed58ccf3e85cbbcc0e33a1726d025c2b40f42a653b1125b82b92d2e0e5"
   license "GPL-3.0-or-later"
 
   livecheck do
@@ -13,10 +13,19 @@ class Samba < Formula
     regex(/href=.*?samba[._-]v?(\d+(?:\.\d+)+)\.t/i)
   end
 
+  bottle do
+    sha256 arm64_sonoma:   "dbc4652d66ee296a45b800b7561bea8d298890aeda5769497ae48c22cab9aa52"
+    sha256 arm64_ventura:  "e640bd9bc121644ba2975c391ef3f4d9a72e202d22f52d88ab086010d0cbd818"
+    sha256 arm64_monterey: "3d13cc668f58122170770689cfe4f9f0cb5af56656aa400b06bc86833e044748"
+    sha256 sonoma:         "74f8233c0a347add0740f7b06f66bd388317d869c5e2f385e4780dc6ecb1ad5d"
+    sha256 ventura:        "0d94fb1010ff4dffb7f524dfd51bdac411e45cdfad093475b86c26dfd790eda4"
+    sha256 monterey:       "e32554b6a7e5e0628185ee4cfab3375c727e7d3f92eb86161c1e171442cec21b"
+    sha256 x86_64_linux:   "6518e50946f700bd797cd7bd3ff2059c33b59ef4a6dbf5396da3acb78bbb635e"
+  end
+
+  depends_on "bison" => :build
   depends_on "cmocka" => :build
   depends_on "pkg-config" => :build
-  # configure requires python3 binary to be present, even when --disable-python is set.
-  depends_on "python@3.11" => :build
   depends_on "gnutls"
   # icu4c can get linked if detected by pkg-config and there isn't a way to force disable
   # without disabling spotlight support. So we just enable the feature for all systems.
@@ -27,13 +36,14 @@ class Samba < Formula
   depends_on "readline"
   depends_on "talloc"
 
-  uses_from_macos "bison" => :build
   uses_from_macos "flex" => :build
   uses_from_macos "perl" => :build
+  uses_from_macos "python" => :build # configure requires python3 binary
   uses_from_macos "libxcrypt"
   uses_from_macos "zlib"
 
   on_macos do
+    depends_on "gettext"
     depends_on "openssl@3"
   end
 
@@ -51,7 +61,7 @@ class Samba < Formula
 
   def install
     # avoid `perl module "Parse::Yapp::Driver" not found` error on macOS 10.xx (not required on 11)
-    if MacOS.version < :big_sur
+    if !OS.mac? || MacOS.version < :big_sur
       ENV.prepend_create_path "PERL5LIB", buildpath/"lib/perl5"
       ENV.prepend_path "PATH", buildpath/"bin"
       resource("Parse::Yapp").stage do
