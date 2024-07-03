@@ -1,11 +1,10 @@
 class Qemu < Formula
-  desc "Emulator for x86 and PowerPC"
+  desc "Generic machine emulator and virtualizer"
   homepage "https://www.qemu.org/"
-  url "https://download.qemu.org/qemu-8.1.3.tar.xz"
-  sha256 "43cc176804105586f74f90398f34e9f85787dff400d3b640d81f7779fbe265bb"
+  url "https://download.qemu.org/qemu-9.0.1.tar.xz"
+  sha256 "d0f4db0fbd151c0cf16f84aeb2a500f6e95009732546f44dafab8d2049bbb805"
   license "GPL-2.0-only"
-  revision 2
-  head "https://git.qemu.org/git/qemu.git", branch: "master"
+  head "https://gitlab.com/qemu-project/qemu.git", branch: "master"
 
   livecheck do
     url "https://www.qemu.org/download/"
@@ -13,13 +12,13 @@ class Qemu < Formula
   end
 
   bottle do
-    sha256 arm64_sonoma:   "0e014bd08f9cba2d8f7fa9f080abd56a22fbad130709735af5d7d5808dfb6f67"
-    sha256 arm64_ventura:  "93a9c3f749e636642d8910a4620a4b3c4bc2c5a13e1b7a24a23506115b21d884"
-    sha256 arm64_monterey: "5e1f8994011ef7624396b0fd0dfb7d473a057d5740b4756a4268fc0b0ef99842"
-    sha256 sonoma:         "4e02534017485a86218a0e0285788afea3ce4fe3e91956dc80cfe8e43d264b9d"
-    sha256 ventura:        "7d9f4cdc4d1990981734cbb027851dc0174ad76c7405c8860c79c2af41f1ad1c"
-    sha256 monterey:       "834e334ab5149ad89fed06b5a2e5213ab37a743d5ca0911a021a4cc79fd61a74"
-    sha256 x86_64_linux:   "f01852dbfd458d73b4be1f62299e43474d15dfd530ed3a3604fc4ac30a2fb97a"
+    sha256 arm64_sonoma:   "3d58309779bf0d61663173227ec0794de57c2cde7fd81b26cdbe10eb1aa8ea6f"
+    sha256 arm64_ventura:  "4a0148d0109276888240ca7300415986601a9a91e2a5bddcf68b99cb8091170f"
+    sha256 arm64_monterey: "73b24818368f0d57c35661184264fb37494309a1f445c3ec5aa7c59431f25440"
+    sha256 sonoma:         "8741728ae3d6f12279ab556dfcf988e04734feb5d1fee7db5c585ad2f674297c"
+    sha256 ventura:        "7674a8f1e5b06e8ca5c67ab6cc97d78745d4db62b33844ce780d2b4d95495b0d"
+    sha256 monterey:       "64baec4e79d3e6aa785ddcce5e4479497e874dc7ef4f50f1fa09173bc834d8cb"
+    sha256 x86_64_linux:   "2accd483fdcba0d0c74ec7e150777aa5383608036b9145fa4e0fc873499f3af9"
   end
 
   depends_on "libtool" => :build
